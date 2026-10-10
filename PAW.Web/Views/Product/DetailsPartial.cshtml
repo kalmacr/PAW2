@@ -1,0 +1,56 @@
+﻿@model PAW.Models.DTO.ProductDTO
+
+<div class="modal-header bg-info text-white">
+    <h5 class="modal-title"><i class="bi bi-info-circle"></i> Detalles del Producto</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+    <dl class="row">
+        <dt class="col-sm-4">ID Interno (Guid)</dt>
+        <dd class="col-sm-8"><small class="text-muted">@Model.Id</small></dd>
+
+        <dt class="col-sm-4">Product ID</dt>
+        <dd class="col-sm-8"><strong>@Model.ProductId</strong></dd>
+
+        <dt class="col-sm-4">Nombre</dt>
+        <dd class="col-sm-8">@Model.Name</dd>
+
+        <dt class="col-sm-4">Descripción</dt>
+        <dd class="col-sm-8">@Model.Description</dd>
+
+        <dt class="col-sm-4">Calificación (Rating)</dt>
+        <dd class="col-sm-8">
+            <span class="badge bg-warning text-dark">★ @Model.Rating / 5</span>
+        </dd>
+
+        <dt class="col-sm-4">Comentarios</dt>
+        <dd class="col-sm-8">@(string.IsNullOrWhiteSpace(Model.Coments) ? "Sin comentarios" : Model.Coments)</dd>
+
+        <dt class="col-sm-4">Creado Por / Fecha</dt>
+        <dd class="col-sm-8">@Model.CreatedBy - @Model.CreateData.ToString("dd/MM/yyyy HH:mm")</dd>
+
+        <dt class="col-sm-4">Modificado Por / Fecha</dt>
+        <dd class="col-sm-8">@Model.ModifiedBy - @Model.ModifiedData.ToString("dd/MM/yyyy HH:mm")</dd>
+
+        <hr class="my-3" />
+        <h6 class="text-secondary fw-bold">Referencias del Sistema</h6>
+
+        <dt class="col-sm-4">Category ID</dt>
+        <dd class="col-sm-8">
+            @(Model.CategoryId.HasValue ? $"{Model.CategoryId} - ({Model.CategoryName ?? "Sin nombre"})" : "N/A")
+        </dd>
+
+        <dt class="col-sm-4">Supplier ID</dt>
+        <dd class="col-sm-8">
+            @(Model.SupplierId.HasValue ? $"{Model.SupplierId} - ({Model.SupplierName ?? "Sin nombre"})" : "N/A")
+        </dd>
+
+        <dt class="col-sm-4">Inventory ID</dt>
+        <dd class="col-sm-8">
+            @(Model.InventoryId.HasValue ? $"{Model.InventoryId} - ({Model.InventoryCode ?? "Sin código"})" : "N/A")
+        </dd>
+    </dl>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+</div>

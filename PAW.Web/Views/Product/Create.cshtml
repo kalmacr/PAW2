@@ -1,0 +1,61 @@
+﻿
+@model PAW.Models.DTO.ProductDTO
+@{
+    ViewData["Title"] = "Create Product";
+}
+
+
+
+
+<div class="container mt-4">
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+            <h4>Create Product</h4>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Create">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="ProductId" class="form-label"></label>
+                    <input asp-for="ProductId" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label"></label>
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Rating" class="form-label"></label>
+                    <input asp-for="Rating" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Coments" class="form-label"></label>
+                    <textarea asp-for="Coments" class="form-control"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-success">
+                    Save
+                </button>
+
+                <a asp-action="Index" class="btn btn-secondary">
+                    Back
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+</div>

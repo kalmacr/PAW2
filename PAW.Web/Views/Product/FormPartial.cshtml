@@ -1,0 +1,62 @@
+﻿@model PAW.Models.DTO.ProductDTO
+
+<div class="modal-header bg-primary text-white">
+    <h5 class="modal-title">@(Model.ProductId > 0 ? "Editar Producto" : "Nuevo Producto")</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<form id="productForm">
+    <div class="modal-body">
+        <input type="hidden" id="Id" value="@Model.Id" />
+        <input type="hidden" id="ProductId" value="@Model.ProductId" />
+        <input type="hidden" id="CreatedBy" value="@Model.CreatedBy" />
+        <input type="hidden" id="CreateData" value="@Model.CreateData.ToString("yyyy-MM-ddTHH:mm:ss")" />
+
+        <div class="mb-3">
+            <label class="form-label">Nombre del Producto</label>
+            <input type="text" id="Name" class="form-control" value="@Model.Name" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Descripción</label>
+            <textarea id="Description" class="form-control" rows="2">@Model.Description</textarea>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Rating (1-5)</label>
+                <input type="number" id="Rating" class="form-control" min="0" max="5" value="@Model.Rating" />
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Modificado Por</label>
+                <input type="text" id="ModifiedBy" class="form-control" value="@Model.ModifiedBy" />
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Comentarios</label>
+            <input type="text" id="Coments" class="form-control" value="@Model.Coments" />
+        </div>
+
+        <hr />
+        <h6 class="text-secondary fw-bold">Referencias</h6>
+
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label class="form-label">Category ID</label>
+                <input type="number" id="CategoryId" class="form-control" value="@Model.CategoryId" />
+            </div>
+            <div class="col-md-4 mb-3">
+                <label class="form-label">Supplier ID</label>
+                <input type="number" id="SupplierId" class="form-control" value="@Model.SupplierId" />
+            </div>
+            <div class="col-md-4 mb-3">
+                <label class="form-label">Inventory ID</label>
+                <input type="number" id="InventoryId" class="form-control" value="@Model.InventoryId" />
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" onclick="saveProduct()">Guardar</button>
+    </div>
+</form>
